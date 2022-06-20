@@ -1,6 +1,5 @@
-from tkinter import Y
 from pydantic import BaseModel, validator
-from typing import Optional, List
+from typing import Optional
 
 
 """ Utilizo pydantic para crear modelos por que me permite manejar los errores de tipo que se puedan obtener, y 
@@ -30,7 +29,7 @@ class Close_error(BaseModel):
 	y_diference: float
 
 class PolygonBase(BaseModel):
-	points: List[Point]
+	points: list[Point]
 
 	#validacion extra que permitira que siempre la lista de puntos ingresados sea igual a 5
 	@validator('points')
@@ -41,47 +40,6 @@ class PolygonBase(BaseModel):
 
 class PolygonCreate(PolygonBase):
 	pass
-	#esquema de ejemplo de como deben de ser pasados los puntos en el modelo PolygonCreate
-	class Config:
-		schemas_examples ={
-			'points': 
-				[
-					{
-						"name": "P1",
-						"north": 1234567.1, 
-						"east": 1234567.1, 
-					},
-
-					{
-						"name": "P2",
-						"north": 1234567.1, 
-						"east": 1234567.1, 
-		
-					},
-
-					{
-						"name": "P3",
-						"north": 1234567.1, 
-						"east": 1234567.1, 
-		
-					},
-
-					{
-						"name": "P4",
-						"north": 1234567.1, 
-						"east": 1234567.1, 
-		
-					},
-					{
-
-						"name": "P1'",
-						"north": 1234567.1, 
-						"east": 1234567.1, 
-		
-					}
-
-				]
-		}
 
 class CoordinatesValues(BaseModel):
 	y: float

@@ -25,7 +25,7 @@ def calculate_distance(
 
 	[y_diference, x_diference] = calculate_diferences(points[0], points[1])
 	distance = sqrt(y_diference**2 + x_diference**2)
-	return distance.real
+	return round(distance.real, 2)
 
 def definite_azimut(
 		diference_north:float, 
@@ -55,7 +55,7 @@ def calculate_azimut(
 	course_angle = abs(atan(x_diference/y_diference)*180/pi)
 	azimut_value = definite_azimut(y_diference, x_diference, course_angle)
 
-	return azimut_value.real
+	return round(azimut_value.real, 3)
 
 def definite_side_name(
 		points:list[Point]
@@ -63,8 +63,6 @@ def definite_side_name(
 	"""Recibe una lista de puntos y calcula su nombre apartir de ahi"""
 
 	return f'{points[0].name} to {points[1].name}'
-
-
 
 def handle_side(
 		points:list[Point]
